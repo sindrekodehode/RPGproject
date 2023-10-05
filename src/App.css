@@ -1,0 +1,131 @@
+#root {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scrollbar-gutter: stable;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+  background-image: url(./assets/Images/Game/Dungeon/landingimg.png);
+  background-size: cover;
+  background-position: center;
+  padding: 3rem 0;
+}
+
+.mainchar {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.genderchoice {
+  position: absolute;
+  top: 3rem;
+  right: 12rem;
+}
+
+.genderchoice button {
+  padding: 20px 20px;
+  border-radius: 50%;
+  border: none;
+  font-size: 28px;
+  font-weight: bold;
+  background: linear-gradient(to right, rgb(46, 15, 169), rgb(146, 13, 33));
+}
+
+.genderchoice button:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.herochoice {
+  height: 100%;
+  display: flex;
+  max-width: 100vw;
+  gap: 1vw;
+}
+
+.herochoice img {
+  max-height: 50vh;
+  max-width: 21vw;
+  margin-bottom: 1rem;
+}
+
+.hero-card {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1rem;
+  background-color: #2e2e2e;
+  padding: 0 1rem;
+  max-width: 25vw;
+}
+
+.hero-card:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.hero-stats {
+  background-color: #434343;
+  border-radius: 6px;
+}
+
+.main-screen {
+  display: flex;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.dungeon-img {
+  max-height: 88vh;
+  width: 65vw;
+}
+
+.hero-small {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1rem;
+  background-color: #2e2e2e;
+  padding: 0 0.1rem;
+  max-width: 15vw;
+}
+
+.monster {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1rem;
+  background-color: #2e2e2e;
+  padding: 0 0.1rem;
+  max-width: 15vw;
+}
