@@ -5,7 +5,7 @@ import tBranchCorridor from "../../Images/Game/Dungeon/corridor-t-junction.png";
 import treasureRoom from "../../Images/Game/Dungeon/chest.png";
 import crabNpc from "../../Images/Game/NPC/crabnpc3.png";
 import elfNpc from "../../Images/Game/NPC/elfnpc.png";
-import { emptyRoom } from "../../Text/text.jsx";
+import { emptyRoom } from "../../Tables/text";
 
 const dungeonData = [
   {

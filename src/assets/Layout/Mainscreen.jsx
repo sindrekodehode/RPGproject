@@ -10,10 +10,10 @@ export default function Mainscreen() {
   const chosenHero = location.state && location.state.chosenHero;
   const isMale = location.state && location.state.isMale;
   let baseDamage = `${chosenHero.dicenr}d${chosenHero.damage} + ${chosenHero.modifier}`;
-  const { monstHP } = useEncounter();
 
-  const [heroHP, setHeroHP] = useState(chosenHero.hp);
+  const [heroHp, setHeroHp] = useState(chosenHero.hp);
   const { encounterType, monsterType } = useEncounter(); // Access the context
+  const [monsterHp, setMonsterHp] = useState(monsterType.Hp);
 
   return (
     <div className="main-screen">
@@ -21,7 +21,7 @@ export default function Mainscreen() {
         {monsterType && (
           <div className="monster">
             <img src={monsterType.img} alt="" />
-            <div className="current-hp">{monstHP && monstHP.hp}</div>
+            <div className="current-hp">Hp: {monsterHp}</div>
             <p>{monsterType.type}</p>
             <p>AC: {monsterType.AC}</p>
             <p>Dmg: {monsterType.dmg}</p>
@@ -41,7 +41,7 @@ export default function Mainscreen() {
               src={isMale ? chosenHero.maleImage : chosenHero.femaleImage}
               alt=""
             />
-            <div className="current-hp">`{heroHP}`</div>
+            <div className="current-hp">Hp: {heroHp}</div>
             <p>Class: {chosenHero.cclass}</p>
             <p>AC: {chosenHero.AC}</p>
             <p>Dmg: {baseDamage}</p>

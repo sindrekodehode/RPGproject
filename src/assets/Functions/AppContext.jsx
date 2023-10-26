@@ -13,6 +13,10 @@ export const ContextProvider = ({ children }) => {
   const [monsterType, setMonsterType] = useState(null);
   const [isMale, setIsMale] = useState(true);
   const [chosenHero, setChosenHero] = useState(null);
+  const [isCombat, setIsCombat] = useState(false);
+  const [heroHp, setHeroHp] = useState(null);
+  const [monsterHp, setMonsterHp] = useState(null);
+  const [heroFirst, setHeroFirst] = useState(true);
 
   const value = {
     encounterType,
@@ -23,6 +27,14 @@ export const ContextProvider = ({ children }) => {
     setIsMale,
     chosenHero,
     setChosenHero,
+    isCombat,
+    setIsCombat,
+    heroHp,
+    setHeroHp,
+    monsterHp,
+    setMonsterHp,
+    heroFirst,
+    setHeroFirst,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

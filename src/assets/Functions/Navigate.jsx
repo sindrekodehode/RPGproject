@@ -7,8 +7,9 @@ function DungeonRoom({ room, navigateToRoom }) {
         alt={`Room ${room.roomNr}`}
         className="dungeon-img"
       />
-      <p>{room.text}</p>
+
       <div className="direction-buttons">
+        <p>{room.text}</p>
         {room.directions.map((direction, index) => (
           <button
             key={index}

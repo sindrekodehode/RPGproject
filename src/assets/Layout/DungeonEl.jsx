@@ -6,13 +6,13 @@ import {
   rollForEncounter,
   rollForMonster,
   getMonsterByType,
+  setIsCombat,
 } from "../Functions/Encounter.jsx";
 import { useEncounter } from "../Functions/AppContext.jsx";
 
 function DungeonEl() {
   const [currentRoom, setCurrentRoom] = useState(dungeonData[0]);
-  const { setEncounterType } = useEncounter();
-  const { setMonsterType } = useEncounter();
+  const { setEncounterType, setMonsterType } = useEncounter();
 
   const navigateToRoom = (roomNumber) => {
     const nextRoom = dungeonData.find((room) => room.roomNr === roomNumber);
@@ -22,6 +22,7 @@ function DungeonEl() {
       setEncounterType(newEncounterType); // Set encounter type using the context
       if (newEncounterType === "monster") {
         console.log("monster encountered");
+        setIsCombat(true);
         const newMonsterType = rollForMonster();
         const chosenMonster = getMonsterByType(newMonsterType.type); // Get the chosen monster object
 
