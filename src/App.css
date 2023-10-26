@@ -129,3 +129,15 @@ body {
   padding: 0 0.1rem;
   max-width: 15vw;
 }
+
+.d20 {
+  width: 5rem;
+  height: 5rem;
+  opacity: 100%;
+}
+
+.d20:hover {
+  opacity: 80%;
+  transform: translateY(-1rem);
+  cursor: pointer;
+}

@@ -2,7 +2,6 @@
 import DungeonEl from "./DungeonEl";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import d20 from "../Images/Game/dice-d20-svgrepo-com.svg";
 import { useEncounter } from "../Functions/AppContext.jsx";
 
 export default function Mainscreen() {
@@ -11,9 +10,9 @@ export default function Mainscreen() {
   const isMale = location.state && location.state.isMale;
   let baseDamage = `${chosenHero.dicenr}d${chosenHero.damage} + ${chosenHero.modifier}`;
 
-  const [heroHp, setHeroHp] = useState(chosenHero.hp);
-  const { encounterType, monsterType } = useEncounter(); // Access the context
-  const [monsterHp, setMonsterHp] = useState(monsterType.Hp);
+  const [heroHp, setHeroHp] = useState(chosenHero.Hp);
+  const { encounterType, monsterType, monsterHp, setMonsterHp } =
+    useEncounter(); // Access the context
 
   return (
     <div className="main-screen">
@@ -30,7 +29,6 @@ export default function Mainscreen() {
       </div>
       <div>
         <DungeonEl />
-        {encounterType === "monster" && <img src={d20} alt="" />}
       </div>
 
       {/* Hero */}
