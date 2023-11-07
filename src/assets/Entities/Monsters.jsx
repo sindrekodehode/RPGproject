@@ -7,6 +7,7 @@ import ehorror from "../Images/Game/Monster/eldritchhorror1.png";
 const Monsters = [
   {
     type: "Goblin",
+    class: "monster",
     AC: 8,
     Hp: 20,
     diceNr: 1,
@@ -17,6 +18,7 @@ const Monsters = [
   },
   {
     type: "Skitterer",
+    class: "monster",
     AC: 9,
     Hp: 30,
     diceNr: 1,
@@ -27,6 +29,7 @@ const Monsters = [
   },
   {
     type: "Orc",
+    class: "monster",
     AC: 11,
     Hp: 40,
     diceNr: 1,
@@ -37,6 +40,7 @@ const Monsters = [
   },
   {
     type: "Skeleton",
+    class: "monster",
     AC: 8,
     Hp: 30,
     diceNr: 1,
@@ -47,6 +51,7 @@ const Monsters = [
   },
   {
     type: "Eldritch Horror",
+    class: "monster",
     AC: 5,
     Hp: 666,
     diceNr: 1,

@@ -4,7 +4,10 @@ import leftbranchCorridor from "../../Images/Game/Dungeon/corridor-door-left.png
 import tBranchCorridor from "../../Images/Game/Dungeon/corridor-t-junction.png";
 import treasureRoom from "../../Images/Game/Dungeon/chest.png";
 import crabNpc from "../../Images/Game/NPC/crabnpc3.png";
-import elfNpc from "../../Images/Game/NPC/elfnpc.png";
+
+import dungeon from "../../Images/Game/Dungeon/dungeon.png";
+import ambush from "../../Images/Game/Dungeon/ambush.png";
+import bossfight from "../../Images/Game/Dungeon/bossfight.png";
 import { emptyRoom } from "../../Tables/text";
 
 const dungeonData = [
@@ -26,7 +29,7 @@ const dungeonData = [
   },
   {
     roomNr: 3,
-    image: elfNpc,
+    image: dungeon,
     text: emptyRoom,
     roomType: "elf",
     directions: ["Back"],
@@ -66,7 +69,7 @@ const dungeonData = [
   },
   {
     roomNr: 8,
-    image: straightCorridor,
+    image: ambush,
     text: emptyRoom,
     roomType: "orc",
     directions: ["Back"],
@@ -130,7 +133,7 @@ const dungeonData = [
   },
   {
     roomNr: 16,
-    image: treasureRoom,
+    image: bossfight,
     text: emptyRoom,
     roomType: "boss",
     directions: ["Back"],

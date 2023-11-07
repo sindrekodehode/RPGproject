@@ -11,8 +11,13 @@ import { useEncounter } from "../Functions/AppContext.jsx";
 
 function DungeonEl() {
   const [currentRoom, setCurrentRoom] = useState(dungeonData[0]);
-  const { setEncounterType, setMonsterType, setIsCombat, isCombat } =
-    useEncounter();
+  const {
+    setEncounterType,
+    setMonsterType,
+    setIsCombat,
+    isCombat,
+    setMonsterHp,
+  } = useEncounter();
 
   const navigateToRoom = (roomNumber) => {
     const nextRoom = dungeonData.find((room) => room.roomNr === roomNumber);
@@ -26,7 +31,9 @@ function DungeonEl() {
         const chosenMonster = getMonsterByType(newMonsterType.type); // Get the chosen monster object
 
         setIsCombat(true);
+
         setMonsterType(chosenMonster); // Set monster type using the context
+        setMonsterHp(chosenMonster.Hp);
       } else if (newEncounterType === "treasure") {
         console.log("treasure found");
       } else {

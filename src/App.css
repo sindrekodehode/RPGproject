@@ -130,14 +130,35 @@ body {
   max-width: 15vw;
 }
 
-.d20 {
-  width: 5rem;
-  height: 5rem;
-  opacity: 100%;
+.dungeon-room-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.d20:hover {
+.diceContainer {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  opacity: 100;
+}
+.diceContainer:hover {
   opacity: 80%;
   transform: translateY(-1rem);
   cursor: pointer;
+}
+
+.diceContainer p {
+  position: absolute;
+  z-index: 10;
+}
+
+.d20 {
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+  opacity: 100%;
 }

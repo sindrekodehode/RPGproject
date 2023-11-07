@@ -3,7 +3,7 @@ import d20 from "../Images/Game/dice-d20-svgrepo-com.svg";
 
 function DungeonRoom({ room, navigateToRoom, isCombat }) {
   return (
-    <div>
+    <div className="dungeon-room-container">
       <img
         src={room.image}
         alt={`Room ${room.roomNr}`}
@@ -13,6 +13,7 @@ function DungeonRoom({ room, navigateToRoom, isCombat }) {
       {isCombat ? (
         <div className="diceContainer">
           {" "}
+          <p>Attack!</p>
           <img className="d20" src={d20} alt="" />{" "}
         </div>
       ) : (

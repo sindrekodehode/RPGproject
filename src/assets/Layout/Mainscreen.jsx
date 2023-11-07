@@ -10,9 +10,8 @@ export default function Mainscreen() {
   const isMale = location.state && location.state.isMale;
   let baseDamage = `${chosenHero.dicenr}d${chosenHero.damage} + ${chosenHero.modifier}`;
 
-  const [heroHp, setHeroHp] = useState(chosenHero.Hp);
-  const { encounterType, monsterType, monsterHp, setMonsterHp } =
-    useEncounter(); // Access the context
+  const [heroHp] = useState(chosenHero.hp);
+  const { monsterType, monsterHp } = useEncounter(); // Access the context
 
   return (
     <div className="main-screen">
@@ -21,7 +20,7 @@ export default function Mainscreen() {
           <div className="monster">
             <img src={monsterType.img} alt="" />
             <div className="current-hp">Hp: {monsterHp}</div>
-            <p>{monsterType.type}</p>
+            <p>{monsterType.race}</p>
             <p>AC: {monsterType.AC}</p>
             <p>Dmg: {monsterType.dmg}</p>
           </div>
