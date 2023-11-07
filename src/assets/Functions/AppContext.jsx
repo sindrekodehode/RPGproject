@@ -17,6 +17,8 @@ export const ContextProvider = ({ children }) => {
   const [heroHp, setHeroHp] = useState(null);
   const [monsterHp, setMonsterHp] = useState(null);
   const [heroFirst, setHeroFirst] = useState(true);
+  const [groupAttackResult, setGroupAttackResult] = useState("", "");
+  const [encounterAttackResult, setEncounterAttackResult] = useState("", "");
 
   const value = {
     encounterType,
@@ -35,6 +37,10 @@ export const ContextProvider = ({ children }) => {
     setMonsterHp,
     heroFirst,
     setHeroFirst,
+    groupAttackResult,
+    setGroupAttackResult,
+    encounterAttackResult,
+    setEncounterAttackResult,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

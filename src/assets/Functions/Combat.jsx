@@ -56,7 +56,7 @@ function StartCombat(hero, companions, monster, minions) {
 
         // Apply the damage to the target's HP
         targetState((prevHp) => prevHp - heroDamage);
-        displayHeroAttackResult(heroAttack, heroDamage);
+        setGroupAttackResult(heroAttack, heroDamage);
       } else {
         displayHeroMiss();
       }

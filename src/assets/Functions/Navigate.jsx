@@ -1,7 +1,13 @@
 /* eslint-disable react/prop-types */
 import d20 from "../Images/Game/dice-d20-svgrepo-com.svg";
 
-function DungeonRoom({ room, navigateToRoom, isCombat }) {
+function DungeonRoom({
+  room,
+  navigateToRoom,
+  isCombat,
+  groupAttackResult,
+  encounterAttackResult,
+}) {
   return (
     <div className="dungeon-room-container">
       <img
@@ -12,9 +18,10 @@ function DungeonRoom({ room, navigateToRoom, isCombat }) {
 
       {isCombat ? (
         <div className="diceContainer">
-          {" "}
-          <p>Attack!</p>
-          <img className="d20" src={d20} alt="" />{" "}
+          <div className="dice-content">
+            <p>Attack!</p>
+            <img className="d20" src={d20} alt="" />
+          </div>
         </div>
       ) : (
         <div className="direction-buttons">
@@ -27,6 +34,18 @@ function DungeonRoom({ room, navigateToRoom, isCombat }) {
               {direction}
             </button>
           ))}
+        </div>
+      )}
+
+      {isCombat && groupAttackResult && (
+        <div className="attack-result">
+          <p>Hero Attack Result: {groupAttackResult}</p>
+        </div>
+      )}
+
+      {isCombat && encounterAttackResult && (
+        <div className="attack-result">
+          <p>Monster Attack Result: {encounterAttackResult}</p>
         </div>
       )}
     </div>
