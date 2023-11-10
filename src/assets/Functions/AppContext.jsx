@@ -17,8 +17,21 @@ export const ContextProvider = ({ children }) => {
   const [heroHp, setHeroHp] = useState(null);
   const [monsterHp, setMonsterHp] = useState(null);
   const [heroFirst, setHeroFirst] = useState(true);
-  const [groupAttackResult, setGroupAttackResult] = useState("", "");
-  const [encounterAttackResult, setEncounterAttackResult] = useState("", "");
+  const [companionArray, setCompanionArray] = useState([null, null]);
+  const [minionArray, setMinionArray] = useState([null, null]);
+  const [groupAttackResult, setGroupAttackResult] = useState({
+    heroAttack: null,
+    heroDamage: null,
+    hit: false,
+    victoryMessage: null,
+  });
+  const [encounterAttackResult, setEncounterAttackResult] = useState({
+    monsterAttack: null,
+    monsterDamage: null,
+    hit: false,
+  });
+  const [elfHp, setElfHp] = useState(null);
+  const [crabHp, setCrabHp] = useState(null);
 
   const value = {
     encounterType,
@@ -41,6 +54,14 @@ export const ContextProvider = ({ children }) => {
     setGroupAttackResult,
     encounterAttackResult,
     setEncounterAttackResult,
+    elfHp,
+    setElfHp,
+    crabHp,
+    setCrabHp,
+    companionArray,
+    setCompanionArray,
+    minionArray,
+    setMinionArray,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
