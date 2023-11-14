@@ -19,6 +19,8 @@ export const ContextProvider = ({ children }) => {
   const [heroFirst, setHeroFirst] = useState(true);
   const [companionArray, setCompanionArray] = useState([null, null]);
   const [minionArray, setMinionArray] = useState([null, null]);
+  const [minion1Hp, setMinion1Hp] = useState(null);
+  const [minion2Hp, setMinion2Hp] = useState(null);
   const [groupAttackResult, setGroupAttackResult] = useState({
     heroAttack: null,
     heroDamage: null,
@@ -32,6 +34,7 @@ export const ContextProvider = ({ children }) => {
   });
   const [elfHp, setElfHp] = useState(null);
   const [crabHp, setCrabHp] = useState(null);
+  const [refreshCombat, setRefreshCombat] = useState(false);
 
   const value = {
     encounterType,
@@ -62,6 +65,12 @@ export const ContextProvider = ({ children }) => {
     setCompanionArray,
     minionArray,
     setMinionArray,
+    refreshCombat,
+    setRefreshCombat,
+    minion1Hp,
+    setMinion1Hp,
+    minion2Hp,
+    setMinion2Hp,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -1,21 +1,26 @@
 /* eslint-disable react/prop-types */
 import d20 from "../Images/Game/dice-d20-svgrepo-com.svg";
 import { StartCombat } from "./Combat";
+import { useState } from "react";
 
 function DungeonRoom({
   room,
   navigateToRoom,
   isCombat,
-  groupAttackResult,
-  encounterAttackResult,
-  monsterType,
+  // groupAttackResult,
+  // encounterAttackResult,
+  // monsterType,
   chosenHero,
   minionArray,
   companionArray,
 }) {
-  const handleAttackClick = () => {
-    StartCombat(chosenHero, companionArray, monsterType, minionArray);
+  const [refreshCombat, setRefreshCombat] = useState(false);
+
+  const handleD20Click = () => {
+    // Set refreshCombat to true to trigger a re-render of CombatComponent
+    setRefreshCombat(true);
   };
+
   return (
     <div className="dungeon-room-container">
       <img
@@ -28,7 +33,7 @@ function DungeonRoom({
         <div className="diceContainer">
           <div className="dice-content">
             <p>Attack!</p>
-            <img className="d20" src={d20} onClick={handleAttackClick} alt="" />
+            <img className="d20" src={d20} onClick={handleD20Click} alt="" />
           </div>
         </div>
       ) : (
@@ -45,7 +50,7 @@ function DungeonRoom({
         </div>
       )}
 
-      {isCombat && groupAttackResult && (
+      {/* {isCombat && groupAttackResult && (
         <div className="attack-result">
           <p>Hero Attack Result: {groupAttackResult}</p>
           {groupAttackResult === "Miss" && <p>Hero misses the attack!</p>}
@@ -59,12 +64,16 @@ function DungeonRoom({
             <p>Monster misses the attack!</p>
           )}
         </div>
-      )}
+      )} */}
 
-      {isCombat && groupAttackResult && groupAttackResult.victoryMessage && (
-        <div className="victory-message">
-          <p>{groupAttackResult.victoryMessage}</p>
-        </div>
+      {isCombat && refreshCombat && (
+        <StartCombat
+          // key={refreshCombat}
+          // refreshCombat={setRefreshCombat}
+          hero={chosenHero}
+          companions={companionArray}
+          minions={minionArray}
+        />
       )}
     </div>
   );
