@@ -44,37 +44,34 @@ export function StartCombat(companions, minions) {
   const monster = monsterType;
   const hero = chosenHero;
   const navigate = useNavigate();
-  console.log("Monster:", monster);
-  console.log("Hero Attack:", hero);
 
   // Start the combat loop
   useEffect(() => {
     const party = [hero, ...(Array.isArray(companions) ? companions : [])];
     const encounter = [monster, ...(Array.isArray(minions) ? minions : [])];
     console.log("Effect is running!");
-    console.log("Party:", party);
-    console.log("Encounter:", encounter);
+
     const combatLoop = () => {
       // Hero's Turn
       console.log("Combat Loop is running!");
       for (let i = 0; i < encounter.length; i++) {
         const currentTarget = encounter[i];
         const currentTargetType = currentTarget.class;
-        console.log("Processing Encounter Target:", encounter[i]);
-        console.log("Current Target:", currentTargetType);
-        let targetState;
+
+        let targetPartyState;
 
         if (currentTargetType === "minion1" && minion1Hp !== undefined) {
-          targetState = setMinion1Hp;
+          targetPartyState = setMinion1Hp;
         } else if (currentTargetType === "minion2" && minion2Hp !== undefined) {
-          targetState = setMinion2Hp;
+          targetPartyState = setMinion2Hp;
         } else {
-          targetState = setMonsterHp;
+          targetPartyState = setMonsterHp;
         }
 
         const target = encounter[i];
-
+        console.log("hero:", hero, "modifier:", hero.modifier);
         const heroAttack = calculateAttack(hero.modifier);
+        console.log("heroAttack:", heroAttack);
 
         if (heroAttack >= target.AC) {
           const heroDamage = calculateDamage(
@@ -82,15 +79,15 @@ export function StartCombat(companions, minions) {
             hero.damage,
             hero.modifier
           );
-
+          console.log("herodamage:", heroDamage);
           // Apply the damage to the target's HP
-          console.log(typeof targetState);
-          targetState((prevHp) => {
+          console.log("target state:", targetPartyState);
+          targetPartyState((prevHp) => {
             console.log("prevHp:", prevHp); // Log the previous HP before updating
             return prevHp - heroDamage;
           });
           setGroupAttackResult(heroAttack, heroDamage, true); // true indicates a hit
-          console.log(monsterHp);
+          console.log("monsterHp:", monsterHp);
         } else {
           setGroupAttackResult(heroAttack, 0, false);
         }
@@ -116,16 +113,16 @@ export function StartCombat(companions, minions) {
         const monsterTargetType = monsterTarget.class;
         console.log("Processing Party Target:", party[i]);
         console.log("Current Target:", monsterTargetType);
-        let targetState;
+        let targetEncounterState;
 
         if (monsterTargetType === "elf" && elfHp !== undefined) {
-          targetState = setElfHp;
+          targetEncounterState = setElfHp;
         } else if (monsterTargetType === "crab" && crabHp !== undefined) {
-          targetState = setCrabHp;
+          targetEncounterState = setCrabHp;
         } else {
-          targetState = setHeroHp;
+          targetEncounterState = setHeroHp;
         }
-
+        console.log("heroHp:", heroHp);
         const monsterAttack = calculateAttack(monster.modifier);
         if (monsterAttack >= monsterTarget.AC) {
           const monsterDamage = calculateDamage(
@@ -135,9 +132,8 @@ export function StartCombat(companions, minions) {
           );
 
           // Apply the damage to the target's HP
-          console.log(typeof targetState);
-          console.log(targetState);
-          targetState((prevHp) => prevHp - monsterDamage);
+          console.log("monster target:", targetEncounterState);
+          targetEncounterState((prevHp) => prevHp - monsterDamage);
           setEncounterAttackResult(monsterAttack, monsterDamage, true);
           console.log(heroHp);
         } else {
@@ -153,7 +149,7 @@ export function StartCombat(companions, minions) {
         // Check if the hero is defeated
         if (heroHp <= 0) {
           navigate("/defeat");
-          // clearInterval(interval); // End the combat loop
+          clearInterval(interval); // End the combat loop
           return;
         }
       }
@@ -161,16 +157,17 @@ export function StartCombat(companions, minions) {
       // Check if all monsters or minions are defeated
       if (encounter.every((target) => target.hp <= 0)) {
         setGroupAttackResult(null, null, true, `Encounter was defeated!`);
-        // clearInterval(interval); // End the combat loop
+        clearInterval(interval); // End the combat loop
         setIsCombat(false);
         return;
       }
       console.log("End of Combat Loop");
       setRefreshCombat(false);
+      clearInterval(interval); // End the combat loop
     };
-
+    setRefreshCombat(false);
     // Start the combat loop
-    // const interval = setInterval(combatLoop, 1000);
+    const interval = setInterval(combatLoop, 10000);
   }, [
     hero,
     monster,

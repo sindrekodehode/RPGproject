@@ -10,8 +10,7 @@ export default function Mainscreen() {
   const isMale = location.state && location.state.isMale;
   let baseDamage = `${chosenHero.dicenr}d${chosenHero.damage} + ${chosenHero.modifier}`;
 
-  const [heroHp] = useState(chosenHero.hp);
-  const { monsterType, monsterHp } = useEncounter(); // Access the context
+  const { monsterType, monsterHp, heroHp } = useEncounter(); // Access the context
 
   return (
     <div className="main-screen">

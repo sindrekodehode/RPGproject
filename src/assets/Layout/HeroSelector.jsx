@@ -5,7 +5,7 @@ import { useEncounter } from "../Functions/AppContext.jsx";
 
 export default function HeroSelector() {
   const { isMale, setIsMale } = useEncounter();
-  const { chosenHero, setChosenHero } = useEncounter();
+  const { chosenHero, setChosenHero, setHeroHp } = useEncounter();
   const navigate = useNavigate();
   const toggleGender = () => {
     setIsMale((prevIsMale) => !prevIsMale);
@@ -13,6 +13,7 @@ export default function HeroSelector() {
 
   const handleHeroSelection = (hero) => {
     setChosenHero(hero);
+    setHeroHp(hero.hp);
 
     navigate("/mainscreen", { state: { chosenHero: hero, isMale } });
   };
